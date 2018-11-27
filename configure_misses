@@ -1,6 +1,3 @@
-Configure miss: sys/params.h usability
-Configure miss: sys/params.h presence
-Configure miss: sys/params.h
 Configure miss: whether __CYGWIN__ is declared
 Configure miss: winsock2.h usability
 Configure miss: winsock2.h presence
