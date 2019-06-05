@@ -4,7 +4,7 @@
 #
 Name     : libmodbus
 Version  : 3.0.6
-Release  : 3
+Release  : 4
 URL      : https://libmodbus.org/releases/libmodbus-3.0.6.tar.gz
 Source0  : https://libmodbus.org/releases/libmodbus-3.0.6.tar.gz
 Summary  : A Modbus library
