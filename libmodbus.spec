@@ -4,7 +4,7 @@
 #
 Name     : libmodbus
 Version  : 3.0.7
-Release  : 5
+Release  : 6
 URL      : https://libmodbus.org/releases/libmodbus-3.0.7.tar.gz
 Source0  : https://libmodbus.org/releases/libmodbus-3.0.7.tar.gz
 Summary  : A Modbus library
@@ -60,20 +60,21 @@ man components for the libmodbus package.
 
 %prep
 %setup -q -n libmodbus-3.0.7
+cd %{_builddir}/libmodbus-3.0.7
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564703608
+export SOURCE_DATE_EPOCH=1604359302
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
@@ -83,14 +84,14 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1564703608
+export SOURCE_DATE_EPOCH=1604359302
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libmodbus
-cp COPYING %{buildroot}/usr/share/package-licenses/libmodbus/COPYING
-cp COPYING.LESSER %{buildroot}/usr/share/package-licenses/libmodbus/COPYING.LESSER
+cp %{_builddir}/libmodbus-3.0.7/COPYING %{buildroot}/usr/share/package-licenses/libmodbus/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/libmodbus-3.0.7/COPYING.LESSER %{buildroot}/usr/share/package-licenses/libmodbus/01a6b4bf79aca9b556822601186afab86e8c4fbf
 %make_install
 
 %files
@@ -156,8 +157,8 @@ cp COPYING.LESSER %{buildroot}/usr/share/package-licenses/libmodbus/COPYING.LESS
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libmodbus/COPYING
-/usr/share/package-licenses/libmodbus/COPYING.LESSER
+/usr/share/package-licenses/libmodbus/01a6b4bf79aca9b556822601186afab86e8c4fbf
+/usr/share/package-licenses/libmodbus/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
 %files man
 %defattr(0644,root,root,0755)
